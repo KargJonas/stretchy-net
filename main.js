@@ -82,12 +82,12 @@ class Particle {
 
   applyForce(force) {
     // F = a / m
-    this.acc.add(force.div(this.mass));
+    this.acc = this.acc.add(force.div(this.mass));
   }
 
   updatePos() {
-    this.vel.add(this.acc);
-    this.pos.add(this.vel);
+    this.vel = this.vel.add(this.acc);
+    this.pos = this.pos.add(this.vel);
     this.acc = new Vec(0, 0);
   }
 
@@ -115,15 +115,20 @@ class Node extends Particle {
     for (let neighbor of this.neighbors) {
       const distVec = this.pos.sub(neighbor.pos);
       const x = distVec.mag();
-      const factor = x / space;
+      // const factor = x / space;
+      const factor = x - space;
 
-      if (factor < 1) return;
+      // console.log(factor)
+
+      if (factor < 0) return;
 
       // k = spring-constant
       // F = k * Dx
-      const f = distVec.mul(k).div(factor);
+      // const f = distVec.mul(k).div(factor);
+      const f = distVec.mul(k).div(-10000);
 
       this.applyForce(f);
+      this.updatePos();
     }
   }
 }
@@ -171,8 +176,9 @@ class Net {
   }
 }
 
-const n = new Net(10, 10);
-n.nodes[9][9].pos.x += 10;
+const n = new Net(20, 20);
+// n.nodes[9][9].pos.x += 10;
+// n.nodes[19][19].pos.x += 10;
 
 n.update();
 
