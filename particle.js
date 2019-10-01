@@ -10,16 +10,16 @@ class Particle {
 
   applyForce(force) {
     // F = a / m
-    this.acc = this.acc.add(force.div(this.mass));
+    this.acc = this.acc.add(force.div(this.mass / this.frictionFactor));
   }
 
-  friction(factor) {
-    this.acc = this.acc.mul(factor);
+  friction(frictionFactor) {
+    this.frictionFactor = frictionFactor;
   }
 
   updatePos() {
     this.vel = this.vel.add(this.acc);
-    this.pos = this.pos.add(this.vel.div(this.frictionFactor));
+    this.pos = this.pos.add(this.vel);
     this.acc = new Vec(0, 0);
   }
 
