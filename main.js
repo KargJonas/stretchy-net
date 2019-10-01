@@ -3,6 +3,9 @@ const space = 10;
 
 const n = new Net(20, 20);
 
+n.nodes[0][0].fix();
+n.nodes[0][19].fix();
+
 n.update();
 
 function update() {
