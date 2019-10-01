@@ -2,6 +2,7 @@ class Particle {
   constructor(pos, mass) {
     this.pos = pos;
     this.mass = mass;
+    this.frictionFactor = 1;
 
     this.vel = new Vec(0, 0);
     this.acc = new Vec(0, 0);
@@ -18,7 +19,7 @@ class Particle {
 
   updatePos() {
     this.vel = this.vel.add(this.acc);
-    this.pos = this.pos.add(this.vel);
+    this.pos = this.pos.add(this.vel.div(this.frictionFactor));
     this.acc = new Vec(0, 0);
   }
 
