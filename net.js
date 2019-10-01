@@ -17,7 +17,7 @@ class Net {
         ];
 
         for (let pos of neighborsPos) {
-          const neighbor = (this.nodes[pos[1]] || [])[pos[0]];
+          const neighbor = (this.nodes[pos[1] + y] || [])[pos[0] + x];
           if (!neighbor) continue;
           this.nodes[y][x].addNeighbor(neighbor);
         }
