@@ -17,16 +17,8 @@ class Node extends Particle {
     for (let neighbor of this.neighbors) {
       const distVec = this.pos.sub(neighbor.pos);
       const x = distVec.mag();
-      // const factor = x / space;
-      const factor = x - space;
+      if (x < space) return;
 
-      // console.log(factor)
-
-      if (factor < 0) return;
-
-      // k = spring-constant
-      // F = k * Dx
-      // const f = distVec.mul(k).div(factor);
       const f = distVec.mul(k).div(-10000);
 
       this.applyForce(f);
