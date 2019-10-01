@@ -1,6 +1,6 @@
 const cnv = document.querySelector("canvas");
 const ctx = cnv.getContext("2d");
-let width, height;
+let width, height, halfWidth, halfHeight;
 
 ctx.fillStyle = "#000000";
 ctx.strokeStyle = "#000000";
@@ -9,8 +9,12 @@ ctx.lineWidth = "1.5px";
 function resize() {
   width = window.innerWidth;
   height = window.innerHeight;
+  halfWidth = width / 2;
+  halfHeight = height / 2;
   cnv.width = width;
   cnv.height = height;
+    ctx.translate(halfWidth, halfHeight);
+
 }
 
 addEventListener("resize", resize);

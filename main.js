@@ -7,7 +7,7 @@ n.update();
 
 function update() {
   requestAnimationFrame(update);
-  ctx.clearRect(0, 0, width, height);
+  ctx.clearRect(-halfWidth, -halfHeight, width, height);
   n.update();
 }
 

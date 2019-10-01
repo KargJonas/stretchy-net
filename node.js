@@ -19,7 +19,7 @@ class Node extends Particle {
       const x = distVec.mag();
       if (x < space) return;
 
-      const f = distVec.mul(k).div(-10000);
+      const f = distVec.mul(k).div(-1000);
 
       this.applyForce(f);
       this.updatePos();
