@@ -18,8 +18,7 @@ class Node extends Particle {
       const distVec = this.pos.sub(neighbor.pos);
       const x = distVec.mag();
       const factor = (space - x);
-
-      const f = distVec.mul(k * factor).div(1000);
+      const f = distVec.mul(k * factor).div(1000).cap(maxForce);
 
       this.applyForce(f);
     }

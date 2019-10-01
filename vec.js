@@ -33,4 +33,13 @@ class Vec {
       Math.pow(this.y, 2)
     );
   }
+
+  cap(maxMag) {
+    const mag = this.mag();
+    if (mag > maxMag) {
+      return new Vec(this.x / mag, this.y / mag);
+    }
+
+    return this;
+  }
 }
