@@ -12,6 +12,10 @@ class Particle {
     this.acc = this.acc.add(force.div(this.mass));
   }
 
+  friction(factor) {
+    this.acc = this.acc.mul(factor);
+  }
+
   updatePos() {
     this.vel = this.vel.add(this.acc);
     this.pos = this.pos.add(this.vel);
@@ -20,5 +24,9 @@ class Particle {
 
   draw() {
     point(this.pos, 3);
+  }
+
+  gravity(amount) {
+    this.applyForce(new Vec(0, amount));
   }
 }

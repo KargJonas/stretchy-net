@@ -3,11 +3,14 @@ const space = 10;
 
 const n = new Net(20, 20);
 
+n.nodes[0][0].fix();
+n.nodes[0][19].fix();
+
 n.update();
 
 function update() {
   requestAnimationFrame(update);
-  ctx.clearRect(0, 0, width, height);
+  ctx.clearRect(-halfWidth, -halfHeight, width, height);
   n.update();
 }
 
