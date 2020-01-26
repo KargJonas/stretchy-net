@@ -1,6 +1,6 @@
 class Node extends Particle {
   constructor(pos) {
-    super(pos, 10);
+    super(pos, 0.2);
     this.neighbors = [];
   }
 
@@ -23,8 +23,7 @@ class Node extends Particle {
       this.applyForce(f);
     }
 
-    this.friction(0.4);
-    this.gravity(0.001);
+    this.gravity(0.1);
     this.updatePos();
   }
 
