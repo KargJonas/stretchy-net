@@ -9,8 +9,8 @@ const mass = 0.1;
 
 const edgeLeft1 = new Vec(105, 120);
 const edgeRight1 = new Vec(1000, 120);
-const edgeLeft2 = new Vec(-1000, 250);
-const edgeRight2 = new Vec(1000, 250);
+const edgeLeft2 = new Vec(-1000, 450);
+const edgeRight2 = new Vec(1000, 450);
 
 n.nodes[0][0].fix();
 n.nodes[0][19].fix();

@@ -17,7 +17,7 @@ class Particle {
     this.vel = this.vel.add(this.acc);
     this.vel = this.vel.div(friction);
 
-    if ((this.pos.y > 115 && this.pos.x > 105) || this.pos.y > 245) {
+    if ((this.pos.y > 115 && this.pos.x > 105) || this.pos.y > 445) {
       this.vel.y = 0;
     }
 
