@@ -1,8 +1,6 @@
 class Particle {
-  constructor(pos, mass) {
+  constructor(pos) {
     this.pos = pos;
-    this.mass = mass;
-    this.frictionFactor = 6;
     this.sigmaForce = 0;
 
     this.vel = new Vec(0, 0);
@@ -11,19 +9,15 @@ class Particle {
 
   applyForce(force) {
     // F = a / m
-    this.acc = this.acc.add(force.div(this.mass));
+    this.acc = this.acc.add(force.div(mass));
     this.sigmaForce += force.mag();
-  }
-
-  friction(frictionFactor) {
-    this.frictionFactor = frictionFactor;
   }
 
   updatePos() {
     this.vel = this.vel.add(this.acc);
-    this.vel = this.vel.div(this.frictionFactor);
+    this.vel = this.vel.div(friction);
 
-    if (this.pos.y > 215 && this.pos.x > 105) {
+    if ((this.pos.y > 115 && this.pos.x > 105) || this.pos.y > 245) {
       this.vel.y = 0;
     }
 
@@ -32,7 +26,7 @@ class Particle {
   }
 
   draw() {
-    ctx.fillStyle = `rgb(${this.sigmaForce * 150}, ${255 - this.sigmaForce * 150}, 0)`;
+    ctx.fillStyle = `rgb(${this.sigmaForce * 50}, ${255 - this.sigmaForce * 50}, 0)`;
     point(this.pos, 3);
     this.sigmaForce = 0;
 

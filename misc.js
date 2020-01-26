@@ -13,8 +13,7 @@ function resize() {
   halfHeight = height / 2;
   cnv.width = width;
   cnv.height = height;
-    ctx.translate(halfWidth, halfHeight);
-
+  ctx.translate(halfWidth - 200, 100);
 }
 
 addEventListener("resize", resize);
